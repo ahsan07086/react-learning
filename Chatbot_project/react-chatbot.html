@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Chatbot</title>
+    <link rel="stylesheet" href="react-chatbot.css">
+  </head>
+  <body>
+    <div class="js-container"></div>    
+    </script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/Chatbot.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+    const container = document.querySelector('.js-container');
+    
+     
+
+      function ChatbotInput({chatMessages,setChatMessage,isLoading,setisLoading}){  
+
+        const [inputtext,setText] = React.useState('');         //Initially the input bar is empty
+        const [val,setval] = React.useState('');
+        function sendInput(event){
+          setText(
+           event.target.value,                 //We can not directly modify/assign values to any variable inside the updater function.
+           //event.target.style.fontStyle="italic",
+          // console.log(event.target.value )
+          )
+          setval(
+            event.target.value
+           )
+        }
+         
+         function sendMessage(){               //setChatMessage = This function update the chatmessage.In react we cannot update the data directly.We need this setChatMessage function to update the data directly at the html.If we update this function react will update the data in HTML.
+          const newchatMessages= [   
+            ...chatMessages,
+            {
+                id: crypto.randomUUID(),
+                message: inputtext,
+                sender: 'user'
+            }
+         ]
+          setChatMessage(newchatMessages);
+          
+          setChatMessage([
+            ...newchatMessages,
+            {
+                id: crypto.randomUUID(),
+                message: response,
+                sender: 'robot'
+            }   
+          ])
+         setText('');
+     }
+       async function sendKey(event){
+         if(event.key=="Enter"){
+         const newchatMessages12=[   
+            ...chatMessages,
+            {
+                id: crypto.randomUUID(),
+                message: val,
+                sender: 'user'
+            }
+         ]
+         setChatMessage(newchatMessages12);
+          setval('');
+          setisLoading(true);
+          event.preventDefault();
+          setChatMessage([
+            ...newchatMessages12,
+            {
+                id: crypto.randomUUID(),
+                message: 'Loading...',
+                sender: 'robot'
+            }   
+          ]);
+         //const response1=Chatbot.getResponse(val);
+         const response=await Chatbot.getResponseAsync(val);
+         
+         setisLoading(false);
+         
+         
+         setChatMessage([
+            ...newchatMessages12,
+            {
+                id: crypto.randomUUID(),
+                message: response,
+                sender: 'robot'
+            }   
+          ])
+       
+         }
+        }                  
+        return (
+         <div> 
+          <h3 className={chatMessages.length===0?"titlechatbox":"visibility"}>Welcome to the chatbot project! Send a message using the textbox below.</h3>                                         
+           <input 
+              type="text" 
+              className={chatMessages.length===0?"label1":"label2"}
+              placeholder="Send a message to Chatbot" 
+              size="72"
+              onChange = {sendInput}
+              onKeyDown = {sendKey}
+              value = {val}
+          />                          
+          
+         </div>
+        );                              
+      }
+     
+      function ChatbotMessage({ message, sender }) {
+      /* if (sender === "user") {
+          return (
+           <div>
+             {message}
+             <img src="user.png" width="40px" />
+           </div>
+          );
+        } else {
+         return (
+          <div>
+           <img src="robot.png" width="40px" />
+           {message}
+          </div>
+         );
+        }
+       }*/ 
+      
+
+       return (
+        <div className={sender==="user"?"user-class":"robot-class"}>
+           {sender==="robot" && 
+           (<img className="chat-message-profile" src="robot.png" 
+              
+           />)}
+           <div className="content-message">
+           {message}
+           </div>
+           {sender==="user"  &&  
+           (<img className="chat-message-profile" src="user.png" 
+             
+           />)}
+        </div>
+       );
+    }
+
+    
+    function ChatbotMessages({chatMessages}){
+       
+       const chatRef=React.useRef(null);
+       React.useEffect(
+        ()=>{
+          const chatvar = chatRef.current;
+          if(chatvar){
+            chatvar.scrollTop=chatvar.scrollHeight;
+          }
+        },[chatMessages])          //here, [chatMessages] is a dependency array.It avoid running the function too often.
+      
+     return (
+        <div className="chatbody-container"
+         ref={chatRef}> 
+           {
+              chatMessages.map((array)=>{
+              return(
+               <ChatbotMessage
+                key={array.id}
+                message={array.message}        //The {} returns the actual value from the key:value pair in object instead of the string value.
+                sender={array.sender}
+               />
+              )
+             }) 
+           }
+          
+        </div>  
+     )  
+   }
+    
+    function App(){ 
+      const [isLoading,setisLoading]=React.useState(false);
+      const [chatMessages,setChatMessage]=React.useState([]);
+      // const chatMessages=arrays[0];           //The React.useState() always return an array.
+      // const setChatMessage=arrays[1];        //chatMessage = This function holds the initial value of the array which is the current value of the array.                                    
+       return(
+        <div className="body">
+          
+           
+           <ChatbotMessages
+           chatMessages = {chatMessages}
+           />
+           <br></br>
+           <br></br>
+            <ChatbotInput  
+           chatMessages = {chatMessages}
+           setChatMessage = {setChatMessage}
+           isLoading = {isLoading}
+           setisLoading = {setisLoading}
+           />
+        </div>
+       );
+    }
+      //const date = dayjs().format('MMMM D');
+      //console.log(date);
+    
+      ReactDOM.createRoot(container).render(<App/>);
+    </script>
+  </body>
+</html>

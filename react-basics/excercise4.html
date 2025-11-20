@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <link rel="stylesheet" href="excercise4.css">
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+        
+    </script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const container = document.querySelector('.js-container');
+      
+      function Button({isBoolian,setBoolian,val,setval,count,setcount}){
+        function buttonclick(){
+          setcount(count+1);
+          if(count%2!==0)
+         {
+          setBoolian(true);
+          setval("OFF");
+         }
+         else
+         {
+          setBoolian(false);
+          setval("ON");
+         }
+        }
+        return(
+          <div className="container">
+            <button className={isBoolian===true ? "button1":"button2"} onClick={buttonclick}>{val}</button>
+          </div>
+        )
+      }
+
+      function App(){
+        let [isBoolian,setBoolian]=React.useState(false)
+        let [val,setval]=React.useState("ON")
+        let [count,setcount]=React.useState(0)
+        return(
+          <>
+          <Button
+            isBoolian={isBoolian}
+            setBoolian={setBoolian}
+            val={val}
+            setval={setval}
+            count={count}
+            setcount={setcount}
+          />
+        </>
+        )
+      }
+      ReactDOM.createRoot(container).render(<App/>);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+        
+    </script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+    //babel = babel is a javascript compiler library.It converts all other languages into Javascript.
+    //JSX = Javascript XML.It is an advanced Javascript that is same as Javascript where we can  write HTML directly in our Javascript code.
+    //To use JSX we need babel library.
+    //In React we use JSX instead of normal Javascript as JSX is simpler.
+    //Our web browser do not understand JSX.So we need babel to compile JSX to Javascript.
+      const container = document.querySelector('.js-container');
+      function Nameset(){
+        let [inputname,setinputname] = React.useState("");
+        let [val,setval] = React.useState("");
+        function setText(event){
+            setinputname(
+             ()=>{
+                inputname=event.target.value;
+                return inputname;
+             }
+            )
+        }
+        function setHandleClick(event){
+          if(event.key=="Enter"){
+            setval(
+              inputname
+            )
+          }
+        }
+        return(
+          <>
+            <input
+             type="text"
+             placeholder="Type a name here"
+             onChange = {setText}
+             onKeyDown = {setHandleClick}
+             value = {inputname}
+            />
+             <Reset 
+             val={val}
+             setval={setval}
+             inputname = {inputname}
+             setinputname = {setinputname}
+          />
+          <Example 
+             inputname1={inputname}
+             setinputname1={setinputname}
+          />
+            <br></br>
+            <br></br>
+            <p>Hello {val}</p>
+           
+          </>
+        )
+
+      }
+
+      function Reset({val,setval,inputname,setinputname}){
+        
+        function resetvalue(){
+           setval(
+            ()=>{
+             if(val !== "")
+             {
+              val = "";
+              return val;
+             }
+            }
+           )
+           setinputname(
+            ()=>{
+               if(inputname !== "")
+             {
+              inputname = "";
+              return inputname;
+             }
+            }
+           )
+        }
+        return (
+          <>
+            <button onClick={resetvalue}>Reset</button>
+          </>
+        )
+      }
+      function Example({inputname1,setinputname1}){
+        function examplevalue(){
+          setinputname1(
+            ()=>{
+            if(inputname1 === "")
+            {
+              inputname1="Alice";
+              return inputname1;
+            }
+          }
+         )
+        }
+        return (
+          <>
+            <button onClick={examplevalue}>Example</button>
+          </>
+        )
+      }
+      function App(){
+        return(
+         <div>
+          <Nameset
+          />
+          
+         </div>
+
+        )
+    }
+      ReactDOM.createRoot(container).render(<App/>);
+    </script>
+  </body>
+</html>

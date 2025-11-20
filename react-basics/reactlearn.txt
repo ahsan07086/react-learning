@@ -1,0 +1,72 @@
+//babel = babel is a javascript compiler library.It converts all other languages into Javascript.
+    //JSX = Javascript XML.It is an advanced Javascript that is same as Javascript where we can  write HTML directly in our Javascript code.
+    //To use JSX we need babel library.
+    //In React we use JSX instead of normal Javascript as JSX is simpler.
+    //Our web browser do not understand JSX.So we need babel to compile JSX to Javascript.
+
+    //Component = A component is a piece of a website.
+    //A Component in react is a function which always return an HTML Element.
+
+    //Using React we can create our own HTML element that would look like and work as same as the build in HTML elements.
+    //THis custom HTML elements will work like a component of the website.
+     //Upper react component for project input form.The React component always start with capital letter.
+     //Fragment (<> .... < />) is used to group together react elements in a component. It helps to avoid include extra div in the component code.
+     //Components are reusable.
+
+
+     //Event Handler = Run a function when we interact with a website.
+     //State=State is the data that is connected to the HTML.When we update this data it will update the HTML.
+     //If we update the State of the array it will be updated in the HTML.So we have to convert array into state so that updating it will update the html.
+     //1.Initial State(current value) containing variable
+     //2.Update State variable
+     //onChange() = onChange() runs a function when we change text inside the input.
+      //props= short form of properties in custom html element.It is given as arguement to the component and works as object to the component.It tells html component which attribute is set.
+      //props make the component reusable.
+      //Ternary operator let an if-else statement directly into jsx
+      //div takes up entire line by itself
+      //div is a block element
+      //flexbox no longer takes up entire line.
+      //It takes as much space as required.
+      //vh=viewport height
+
+      //Hooks=One of the important feature in React.
+      //Hooks allows insertion of React features into our Component
+      //Some important React hooks are useState(),useRef(),useEffect() and more..
+      //useEffect() run some code after the component is created or updated.
+      //In React, we should put hook at the top of the component.
+      //We should not put hooks inside of anything.
+
+      //useRef()=Another React hook.It automatically save an HTML element from the component.
+      //ref is a container with special React features.
+
+      //nodeJs allows us to run Javascript code outside a browser.
+
+      //npm = node package manager
+      //package = External library
+      //npm = Lets us install external libraries (or packages) into our project
+      //npm contains millions of package to use
+      //To use create-vite we need to
+      //1.Install create-vite package
+      //2.Run create-vite in the command line:
+      //npx create-vite where x means excecute
+
+      //Public folder contains images that should be available to the public.
+      //(We can access these using url)
+
+      //git helps us track changes in the code.
+      //eslint = highlights problem in our Javascript code
+
+      //Vite is the tool that is used to set up ReactJs project.
+      //Vite helps us build th website
+      //Vite also creates server (A server puts our website at a URL)
+      //The Vite Server refreshes the website when we make some changes to the code.
+
+      //In react it is best practice to load external libraries from the node modules instead of using <script/>
+      //import is used to load the external libraries from the module.
+
+      //The folder main.jsx render the React code.It sets up the environment for react.
+
+      // StrictMode is a special app by react.It gives us additional checks and warnings when developing the app.
+
+      //Vite lets us import any type of file.
+      //git helps us track changes of the code

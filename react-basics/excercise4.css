@@ -1,0 +1,31 @@
+body{
+    margin: 0px;
+}
+.container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+.button1{
+    background-color: rgb(220, 53, 63);
+    font-size: 1.0rem;
+    padding: 11px 16px;
+    color: white;
+    font-family: Arial;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    
+}
+.button2{
+    background-color: rgb(25, 135, 84);
+    font-size: 1.0rem;
+    padding: 11px 16px;
+    color: white;
+    font-family: Arial;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    
+}

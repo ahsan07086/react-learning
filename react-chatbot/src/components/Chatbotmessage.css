@@ -1,0 +1,21 @@
+.user-class{
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+.robot-class{
+    display: flex;
+    align-items: start;
+}
+.content-message{
+    background-color: rgb(238, 238, 238);
+    padding: 15px 15px;
+    border-radius: 30px;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    max-width: 300px;
+}
+.chat-message-profile{
+    width: 45px;
+}

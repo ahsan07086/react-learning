@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+        
+    </script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+    //babel = babel is a javascript compiler library.It converts all other languages into Javascript.
+    //JSX = Javascript XML.It is an advanced Javascript that is same as Javascript where we can  write HTML directly in our Javascript code.
+    //To use JSX we need babel library.
+    //In React we use JSX instead of normal Javascript as JSX is simpler.
+    //Our web browser do not understand JSX.So we need babel to compile JSX to Javascript.
+      const container = document.querySelector('.js-container');
+      let productcost = 4;
+      let shippingcost = 5;
+      const date = dayjs().format('MMMM D');
+      console.log(date);
+      const div = ( 
+        <div>
+          <p>Product cost: $<span style={{ textDecoration: "underline", fontWeight: "bold" }}>{productcost}</span></p>
+          <p>Shipping cost: $<span style={{ textDecoration: "underline", fontWeight: "bold" }}>{shippingcost}</span></p>
+          <p>Total cost: $<span style={{ textDecoration: "underline", fontWeight: "bold" }}>{productcost+shippingcost}</span></p>
+          <button>Place your order</button>
+       </div>
+      );
+      ReactDOM.createRoot(container).render(div);
+    </script>
+  </body>
+</html>

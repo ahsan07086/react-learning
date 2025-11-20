@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+        
+    </script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const container = document.querySelector('.js-container');
+      function Button({counting,strr,setCountt,setStrr}){
+        
+        function buttonchange(){
+            setCountt(
+                () =>{
+                counting=counting+1                       //Nested updater function is required when we want to state change at the sametime on one button click where one state depends on another.
+                  setStrr(
+                    strr="time"                        
+                )
+                
+                if(counting>=10)
+                {
+                    counting = 0;
+                    setStrr(
+                    strr="times"                        
+                )
+                    return counting;
+                }
+                if(counting>1)
+                {
+                    setStrr(
+                    strr="times"                        
+                )
+                }
+                  
+                  return counting;
+                }
+            )
+        }
+           
+        return(
+            <button onClick={buttonchange}>
+             Clicked {counting} {strr}
+            </button>
+        ) 
+      }
+
+      function Button1({counting,strr,setCountt,setStrr}){
+          
+        function buttonchange(){
+            setCountt(
+                () =>{
+                counting=counting+1                       //Nested updater function is required when we want to state change at the sametime on one button click where one state depends on another.
+                  setStrr(
+                    strr="time"                        
+                )
+                
+                if(counting>=10)
+                {
+                    counting = 0;
+                    setStrr(
+                    strr="times"                        
+                )
+                    return counting;
+                }
+                if(counting>1)
+                {
+                    setStrr(
+                    strr="times"                        
+                )
+                }
+                  
+                  return counting;
+                }
+            )
+        }
+           
+        return(
+            <button onClick={buttonchange}>
+             Clicked {counting} {strr}
+            </button>
+        ) 
+      }
+
+      function Reset({counting,strr,setCountt,setStrr}){
+         
+         function resetall(){
+               setCountt(
+                ()=>{
+                    counting=0;
+                    return counting;
+                }
+               )
+               setStrr(
+                ()=>{
+                    strr="times"
+                    return strr;
+                }
+               )
+         }
+        return (
+           <>
+            <button onClick={resetall}>Reset</button>
+           </>
+        )
+      }
+
+      function App(){
+        
+        let [counting,setCountt] = React.useState(0);
+        let [strr,setStrr] = React.useState("times");
+        return(
+          <>
+          <Button
+            counting = {counting}
+            strr = {strr}
+            setCountt = {setCountt}
+            setStrr = {setStrr}
+          />
+          <Button1 
+            counting = {counting}
+            strr = {strr}
+            setCountt = {setCountt}
+            setStrr = {setStrr}
+          />
+          <Reset 
+              counting = {counting}
+              strr = {strr}
+              setCountt = {setCountt}
+            setStrr = {setStrr}
+          />
+
+        </>
+        )
+      }
+      ReactDOM.createRoot(container).render(<App/>);
+    </script>
+  </body>
+</html>

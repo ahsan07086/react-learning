@@ -1,0 +1,38 @@
+.label2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.0rem;
+    padding: 15px;
+    border: 2px solid;
+    border-radius: 30px;
+    border-width: 1px;
+    margin-bottom: 45px;
+    
+}
+.label1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.0rem;
+    padding: 15px;
+    border: 1px solid;
+    border-radius: 30px;
+    margin-bottom: 40px; /* reduce this */
+    transform: translateY(-380px); /* smoothly moves up */
+}
+.titlechatbox{
+   text-align: center;
+   font-size: 1.6rem;
+   font-family: Arial;
+   color: rgb(91, 86, 80);
+   margin-bottom: 400px;
+}
+.visibility{
+    display: none;
+}
+
+.spinner{
+    height: 40px;
+    margin: -15px;
+}
