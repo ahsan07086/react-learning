@@ -72,3 +72,9 @@
       //git helps us track changes of the code
 
       //.gitignore tells which file or folder to ignore
+
+      //Routing is a feature in ReactJs that is used to create multiple pages.
+
+      //Routing helps us create multiple pages in 1 HTML file.
+
+      //It helps us reuse our HTML code.
