@@ -1,3 +1,5 @@
+import './header.css'
+import './Homepage.css'
 export function Homepage(){
    return(
    <>
