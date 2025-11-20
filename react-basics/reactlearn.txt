@@ -70,3 +70,5 @@
 
       //Vite lets us import any type of file.
       //git helps us track changes of the code
+
+      //.gitignore tells which file or folder to ignore
