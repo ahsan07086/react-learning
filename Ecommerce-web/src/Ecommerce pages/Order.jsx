@@ -5,7 +5,7 @@ export function Order(){
            <title>Orders</title>
               <div className="header">
                 <div className="left-section">
-                <a href="index.html" className="header-link">
+                <a href="/" className="header-link">
                     <img className="logo"
                     src="images/logo-white.png" />
                     <img className="mobile-logo"
@@ -22,12 +22,12 @@ export function Order(){
                 </div>
 
                 <div className="right-section">
-                <a className="orders-link header-link" href="orders.html">
+                <a className="orders-link header-link" href="/order">
 
                     <span className="orders-text">Orders</span>
                 </a>
 
-                <a className="cart-link header-link" href="checkout.html">
+                <a className="cart-link header-link" href="/checkout">
                     <img className="cart-icon" src="images/icons/cart-icon.png" />
                     <div className="cart-quantity">3</div>
                     <div className="cart-text">Cart</div>
@@ -81,7 +81,7 @@ export function Order(){
                     </div>
 
                     <div className="product-actions">
-                    <a href="tracking.html">
+                    <a href="/track">
                         <button className="track-package-button button-secondary">
                         Track package
                         </button>
@@ -109,7 +109,7 @@ export function Order(){
                     </div>
 
                     <div className="product-actions">
-                    <a href="tracking.html">
+                    <a href="/track">
                         <button className="track-package-button button-secondary">
                         Track package
                         </button>
@@ -160,7 +160,7 @@ export function Order(){
                     </div>
 
                     <div className="product-actions">
-                    <a href="tracking.html">
+                    <a href="/track">
                         <button className="track-package-button button-secondary">
                         Track package
                         </button>
