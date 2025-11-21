@@ -4,6 +4,7 @@ export function Track(){
     return(
         <>
             <title>Tracking</title>
+             <link rel="icon" href="tracking-favicon.png"/>
                     <Header/>
                     <div className="tracking-page">
                     <div className="order-tracking">

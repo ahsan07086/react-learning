@@ -4,6 +4,7 @@ export function Homepage(){
    return(
    <>
       <title>Homepage</title>
+      <link rel="icon" href="home-favicon.png" />
       
     <Header/>
     <div className="home-page">
