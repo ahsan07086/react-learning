@@ -78,3 +78,4 @@
       //Routing helps us create multiple pages in 1 HTML file.
 
       //It helps us reuse our HTML code.
+      //Route component tells react all the pages that are in our website.
