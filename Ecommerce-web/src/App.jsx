@@ -2,6 +2,7 @@ import {Homepage} from './Ecommerce pages/Homepage'
 import './App.css'
 import { Route, Routes } from 'react-router'
 import { Checkout } from './Ecommerce pages/Checkout'
+import { Order } from './Ecommerce pages/Order'
 
 function App() {
   //Routes is the collection of pages in a website.
@@ -12,6 +13,7 @@ function App() {
       <Routes>         
         <Route path="/" element={<Homepage/>}></Route>
         <Route path="checkout" element={<Checkout/>}></Route>
+        <Route path="order" element={<Order/>}></Route>
      </Routes>
     </>
      
