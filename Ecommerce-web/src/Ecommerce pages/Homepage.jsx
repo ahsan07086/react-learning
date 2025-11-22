@@ -1,5 +1,5 @@
 import { Header } from '../HeaderComponents/Header';
-import { products } from '../../Javascriptfile/products';
+import { useEffect, useState } from 'react';
 import axios from 'axios'
 import './Homepage.css'
 export function Homepage(){
@@ -9,6 +9,7 @@ export function Homepage(){
   //fetch returns a promise.Promise helps us wait for asynchronous code to finish.
   //The Backend can run on the frontend computer.
   //axios is the cleaner way to make requests to the backend.
+  //Strictmode helps us use useEffect twice to catch the bug and helps us development.
   /* fetch(`http://localhost:3000/api/products`) 
       .then((response)=>{
         response.json()           //.json() method gives us the product data.Here response.json() is asynchronous so it can not be saved in the variable.
@@ -16,10 +17,13 @@ export function Homepage(){
           console.log(data);      // The overall data that is fetched from the backend.
         })                                       
    */
-   axios.get(`http://localhost:3000/api/products`)
-       .then((response)=>{
-         console.log(response.data);
-       })
+    let [products,setProducts]=useState([]);
+    useEffect(()=>{
+        axios.get(`http://localhost:3000/api/products`)
+        .then((response)=>{
+          setProducts(response.data);
+        });
+    },[])
    return(
    <>
       <title>Homepage</title>
