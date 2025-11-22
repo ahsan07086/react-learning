@@ -17,19 +17,26 @@ export function Homepage(){
           console.log(data);      // The overall data that is fetched from the backend.
         })                                       
    */
+    //Products and Cartitems are array of object.
     let [products,setProducts]=useState([]);
+    let [cartitem,setCartItem]=useState([]);
+    //Here useEffect is used to ensure that the data is fetched only one time after reload of the Homepage.
     useEffect(()=>{
-        axios.get(`http://localhost:3000/api/products`)
+        axios.get(`http://localhost:3000/api/products`)  
         .then((response)=>{
-          setProducts(response.data);
+          setProducts(response.data);                //The response will be returned in the array format since we are using axioms and get method to fetch the data.
         });
+        axios.get(`http://localhost:3000/api/cart-items`)
+        .then((response)=>{
+          setCartItem(response.data);
+        })
     },[])
    return(
    <>
       <title>Homepage</title>
       <link rel="icon" href="home-favicon.png" />
       
-    <Header/>
+    <Header cartitem={cartitem}/>
     <div className="home-page">
       <div className="products-grid">
         {products.map((product)=>{
@@ -53,7 +60,7 @@ export function Homepage(){
           </div>
 
           <div className="product-price">
-            ৳{(product.priceCents/100).toFixed(2)}
+           {(product.priceCents/100).toFixed(2)}৳
           </div>
 
           <div className="product-quantity-container">

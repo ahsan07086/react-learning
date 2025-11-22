@@ -2,7 +2,12 @@
 //When we use react router we should be using the Link component
 import { NavLink } from 'react-router' 
 import './header.css'
-export function Header(){
+export function Header({cartitem}){
+    let totalQuantity=0;
+    cartitem.forEach((item)=>{
+       totalQuantity+=item.quantity;
+       return totalQuantity;
+    })
     return(
       <>
         <div className="header">
@@ -31,7 +36,7 @@ export function Header(){
 
                 <NavLink className="cart-link header-link" to="/checkout">
                 <img className="cart-icon" src="images/icons/cart-icon.png" />
-                <div className="cart-quantity">3</div>
+                <div className="cart-quantity">{totalQuantity}</div>
                 <div className="cart-text">Cart</div>
                 </NavLink>
             </div>
