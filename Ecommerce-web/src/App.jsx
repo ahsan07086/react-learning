@@ -12,6 +12,9 @@ function App() {
   //Route is basically a page in the website.
   //Route path tells the url of the page in the website.
   let [cartitem,setCartItem]=useState([]);
+  
+
+
   useEffect(()=>{
     axios.get('http://localhost:3000/api/cart-items?expand=product')  //query expander.It is a query parameter that lets us add additional information to the backend api.
         .then((response)=>{
