@@ -79,3 +79,5 @@
 
       //It helps us reuse our HTML code.
       //Route component tells react all the pages that are in our website.
+
+      //Data Fetching = get data from the backend(Using the code)
