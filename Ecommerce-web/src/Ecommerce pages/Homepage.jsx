@@ -1,5 +1,6 @@
 import { Header } from '../HeaderComponents/Header';
 import { useEffect, useState } from 'react';
+import {monocent} from '../utilities/monocent'
 import axios from 'axios'
 import './Homepage.css'
 export function Homepage({cartitem}){
@@ -22,7 +23,7 @@ export function Homepage({cartitem}){
     
     //Here useEffect is used to ensure that the data is fetched only one time after reload of the Homepage.
     useEffect(()=>{
-        axios.get(`http://localhost:3000/api/products`)  
+        axios.get('http://localhost:3000/api/products')  
         .then((response)=>{
           setProducts(response.data);                //The response will be returned in the array format since we are using axioms and get method to fetch the data.
         });
@@ -56,7 +57,7 @@ export function Homepage({cartitem}){
           </div>
 
           <div className="product-price">
-           {(product.priceCents/100).toFixed(2)}৳
+              {monocent(product.priceCents)}
           </div>
 
           <div className="product-quantity-container">
