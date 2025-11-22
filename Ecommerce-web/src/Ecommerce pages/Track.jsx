@@ -1,11 +1,11 @@
 import { Header } from '../HeaderComponents/Header'
 import './Track.css'
-export function Track(){
+export function Track({cartitem}){
     return(
         <>
             <title>Tracking</title>
              <link rel="icon" href="tracking-favicon.png"/>
-                    <Header/>
+                    <Header cartitem={cartitem}/>
                     <div className="tracking-page">
                     <div className="order-tracking">
                         <a className="back-to-orders-link link-primary" href="/order">

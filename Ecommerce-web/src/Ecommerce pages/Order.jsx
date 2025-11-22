@@ -1,11 +1,11 @@
 import { Header } from '../HeaderComponents/Header';
 import './Order.css';
-export function Order(){
+export function Order({cartitem}){
      return(
         <>
            <title>Orders</title>
            <link rel="icon" href="orders-favicon.png" />
-              <Header/>
+              <Header cartitem={cartitem}/>
 
                <div className="orders-page">
                 <div className="page-title">Your Orders</div>
