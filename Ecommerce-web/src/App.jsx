@@ -27,8 +27,8 @@ function App() {
       <Routes>         
         <Route path="/" element={<Homepage cartitem={cartitem}/>}></Route>
         <Route path="checkout" element={<Checkout cartitem={cartitem}/>}></Route>
-        <Route path="order" element={<Order/>}></Route>
-        <Route path="track" element={<Track/>}></Route>
+        <Route path="order" element={<Order cartitem={cartitem}/>}></Route>
+        <Route path="track" element={<Track cartitem={cartitem}/>}></Route>
      </Routes>
     </>
      
