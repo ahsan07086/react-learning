@@ -78,7 +78,7 @@ return(
                     }
                     return(
                     <div key={delivery.id} className="delivery-option">
-                    <input type="radio" checked={delivery.id==item.deliveryOptionId}
+                    <input type="radio" checked={delivery.id===item.deliveryOptionId}
                       className="delivery-option-input"
                       name={`delivery-option-${item.productId}`}/>
                     <div>
