@@ -6,11 +6,17 @@ import axios from 'axios'
 import { monocent } from '../utilities/monocent.js'
 export function Checkout({cartitem}){
  let [cartdelivery,setcartdelivery] = useState([]);
-
+ let [paymentsummary,setpaymentsummary] = useState(null);
  useEffect(()=>{
     axios.get('http://localhost:3000/api/delivery-options?expand=estimatedDeliveryTime')
     .then((response)=>{
           setcartdelivery(response.data)
+    });
+  },[]);
+  useEffect(()=>{
+    axios.get('http://localhost:3000/api/payment-summary')
+    .then((response)=>{
+          setpaymentsummary(response.data)
     });
   },[]);
 return(
@@ -24,11 +30,11 @@ return(
 
       <div className="checkout-grid">
         <div className="order-summary">
-          { cartitem.map((item)=>
+          {cartdelivery.length>0 && cartitem.map((item)=>
           { 
            let deliverydate = cartdelivery.find((delivery)=>{
              return delivery.id===item.deliveryOptionId;
-           }) 
+           });
            return(
               <div key={item.productId} className="cart-item-container">
             <div className="delivery-date">
@@ -74,7 +80,7 @@ return(
                     <div key={delivery.id} className="delivery-option">
                     <input type="radio" checked={delivery.id==item.deliveryOptionId}
                       className="delivery-option-input"
-                      name={`delivery-option-${item.productId}}`}/>
+                      name={`delivery-option-${item.productId}`}/>
                     <div>
                     <div className="delivery-option-date">
                       {dayjs(delivery.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
@@ -104,28 +110,28 @@ return(
             </div>
 
             <div className="payment-summary-row">
-              <div>Items (3):</div>
-              <div className="payment-summary-money">$42.75</div>
+              <div>Items {paymentsummary?.totalItems}:</div>
+              <div className="payment-summary-money">{monocent(paymentsummary?.productCostCents)}</div>
             </div>
 
             <div className="payment-summary-row">
               <div>Shipping &amp; handling:</div>
-              <div className="payment-summary-money">$4.99</div>
+              <div className="payment-summary-money">{monocent(paymentsummary?.shippingCostCents)}</div>
             </div>
 
             <div className="payment-summary-row subtotal-row">
               <div>Total before tax:</div>
-              <div className="payment-summary-money">$47.74</div>
+              <div className="payment-summary-money">{monocent(paymentsummary?.totalCostBeforeTaxCents)}</div>
             </div>
 
             <div className="payment-summary-row">
               <div>Estimated tax (10%):</div>
-              <div className="payment-summary-money">$4.77</div>
+              <div className="payment-summary-money">{monocent(paymentsummary?.taxCents)}</div>
             </div>
 
             <div className="payment-summary-row total-row">
               <div>Order total:</div>
-              <div className="payment-summary-money">$52.51</div>
+              <div className="payment-summary-money">{monocent(paymentsummary?.totalCostCents)}</div>
             </div>
 
             <button className="place-order-button button-primary">
