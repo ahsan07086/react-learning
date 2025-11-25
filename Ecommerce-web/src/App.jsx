@@ -11,6 +11,11 @@ function App() {
   //Routes is the collection of pages in a website.
   //Route is basically a page in the website.
   //Route path tells the url of the page in the website.
+  //There are 4 common types of data.These are:
+  //1.Get:We want to get some data from backend.
+  //2.Post:We want to add some data to backend.
+  //3.Put:We want to update some data of the backend.
+  //4.DELETE:We want to delete some data from the backend.
   let [cartitem,setCartItem]=useState([]);
   
   const loadcart = async ()=>{
@@ -28,7 +33,7 @@ function App() {
     <>
       <Routes>         
         <Route path="/" element={<Homepage cartitem={cartitem} loadcart={loadcart}/>}></Route>
-        <Route path="checkout" element={<Checkout cartitem={cartitem}/>}></Route>
+        <Route path="checkout" element={<Checkout cartitem={cartitem} loadcart={loadcart}/>}></Route>
         <Route path="order" element={<Order cartitem={cartitem}/>}></Route>
         <Route path="track/:orderId/:productId" element={<Track cartitem={cartitem}/>}></Route>
      </Routes>

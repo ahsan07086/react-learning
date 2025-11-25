@@ -2,7 +2,7 @@ import './Checkout.css'
 import { OrderCart } from './Order-cart.jsx';
 import dayjs from 'dayjs'
 import { Orderdelivery } from './Order-delivery.jsx';
-export function Ordersummary({cartitem,cartdelivery}){
+export function Ordersummary({cartitem,cartdelivery,loadcart}){
     return(
         
          <div className="order-summary">
@@ -26,6 +26,7 @@ export function Ordersummary({cartitem,cartdelivery}){
               <Orderdelivery 
               cartdelivery = {cartdelivery} 
               item = {item}
+              loadcart = {loadcart}
               />
             </div>
           </div>

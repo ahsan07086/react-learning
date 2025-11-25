@@ -6,7 +6,7 @@ import { Ordersummary } from './Order-summary.jsx'
 import { PaymentSummary } from './Payment-summary.jsx'
 
 
-export function Checkout({cartitem}){
+export function Checkout({cartitem,loadcart}){
  let [cartdelivery,setcartdelivery] = useState([]);
  let [paymentsummary,setpaymentsummary] = useState(null);
  useEffect(()=>{
@@ -20,7 +20,7 @@ export function Checkout({cartitem}){
     .then((response)=>{
           setpaymentsummary(response.data)
     });
-  },[]);
+  },[cartitem]);       //Initially the dependency array is empty.So,whenever the value changes the useEffect will be rerun.
 return(
    <>
      <title>Checkout</title>
@@ -34,6 +34,7 @@ return(
          <Ordersummary 
            cartitem = {cartitem}
            cartdelivery = {cartdelivery}
+           loadcart = {loadcart}
          />
          <PaymentSummary 
          paymentsummary={paymentsummary}
