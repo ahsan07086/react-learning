@@ -1,59 +1,22 @@
-import {monocent} from '../utilities/monocent'
 import './Homepage.css'
-export function Productgrid({products}){
+import { Product } from './Product'
+export function Productgrid({products,loadcart}){
+  //The onClick() is a evenHandler that will be used to add the element inside the cart.
+  //The backend handles adding the element inside the cart.
+  //In real world the backend is used to add,update and delete the data.
+  //In order to add the element to the backend we can do another request.This request to add new element to the backend is done using post method.
+  //.get() method is used to request to get data from backend.
+  //.post() method is used to update new data to the backend.
+  //****React hooks can not be defined inside a loop,condition or callback function. 
     return(
         <>
           <div className="products-grid">
         {products.map((product)=>{
           return(
-             <div key={product.id} className="product-container">
-          <div className="product-image-container">
-            <img className="product-image"
-              src={product.image}/>
-          </div>
-
-          <div className="product-name limit-text-to-2-lines">
-            {product.name}
-          </div>
-
-          <div className="product-rating-container">
-            <img className="product-rating-stars"
-              src={`images/ratings/rating-${product.rating.stars * 10}.png`}/>
-            <div className="product-rating-count link-primary">
-              {product.rating.count}
-            </div>
-          </div>
-
-          <div className="product-price">
-              {monocent(product.priceCents)}
-          </div>
-
-          <div className="product-quantity-container">
-            <select>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
-
-          <div className="product-spacer"></div>
-
-          <div className="added-to-cart">
-            <img src="images/icons/checkmark.png" />
-            Added
-          </div>
-
-          <button className="add-to-cart-button button-primary">
-            Add to Cart
-          </button>
-        </div>
+             <Product 
+             key={product.id}
+             product={product} 
+             loadcart={loadcart}/>
           )
         })}
       </div>

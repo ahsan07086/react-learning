@@ -13,22 +13,24 @@ function App() {
   //Route path tells the url of the page in the website.
   let [cartitem,setCartItem]=useState([]);
   
-
+  const loadcart = async ()=>{
+     const response = await axios.get('http://localhost:3000/api/cart-items?expand=product');
+     setCartItem(response.data);
+    }
 
   useEffect(()=>{
-    axios.get('http://localhost:3000/api/cart-items?expand=product')  //query expander.It is a query parameter that lets us add additional information to the backend api.
-        .then((response)=>{
-          setCartItem(response.data);
-        })
+    
+      //query expander.It is a query parameter that lets us add additional information to the backend api.
+    loadcart();
   },[])
   
   return (
     <>
       <Routes>         
-        <Route path="/" element={<Homepage cartitem={cartitem}/>}></Route>
+        <Route path="/" element={<Homepage cartitem={cartitem} loadcart={loadcart}/>}></Route>
         <Route path="checkout" element={<Checkout cartitem={cartitem}/>}></Route>
         <Route path="order" element={<Order cartitem={cartitem}/>}></Route>
-        <Route path="track" element={<Track cartitem={cartitem}/>}></Route>
+        <Route path="track/:orderId/:productId" element={<Track cartitem={cartitem}/>}></Route>
      </Routes>
     </>
      

@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 import './Homepage.css'
 import { Productgrid } from './Product-grid';
-export function Homepage({cartitem}){
+import { Slider } from './Slider';
+export function Homepage({cartitem,loadcart}){
    //fetch is a built in function provided by Javascipt.
   //We can not save the data returned by fetch function in a variable.
   //Here the fetch function takes some time to complete its excecution.It does not excecute right away.This type of function is called asynchronous function.
@@ -22,11 +23,16 @@ export function Homepage({cartitem}){
     let [products,setProducts]=useState([]);
     
     //Here useEffect is used to ensure that the data is fetched only one time after reload of the Homepage.
+    //Async Await is a feature in Javascript to fetch data.
+    //It makes the asynchronous code works like the normal code.
+    //The async await function returns a promise to the function.
+    //The function getData holds the promise data.
     useEffect(()=>{
-        axios.get('http://localhost:3000/api/products')  
-        .then((response)=>{
+     const getData=async ()=>{
+       const response = await axios.get('http://localhost:3000/api/products')  
           setProducts(response.data);                //The response will be returned in the array format since we are using axioms and get method to fetch the data.
-        });
+     }
+     getData();   
     },[])
    return(
    <>
@@ -35,7 +41,7 @@ export function Homepage({cartitem}){
       
     <Header cartitem={cartitem}/>
     <div className="home-page">
-      <Productgrid products = {products}/>
+      <Productgrid products = {products} loadcart = {loadcart}/>
     </div>
    </>
    );

@@ -1,15 +1,21 @@
 import dayjs from 'dayjs';
 import { monocent } from '../utilities/monocent';
+import { Link, NavLink } from 'react-router';
 import { Fragment } from 'react';
 import './Order.css';
 export function Ordergrid({orderitem}){
+    
      return(
         <>
           <div className="orders-grid">
                 {
                     orderitem.map((order)=>{
+                    //let orderId;
+                    //orderId= order.id;
                     return(
+
                     <div key={order.id} className="order-container">
+                     
 
                     <div className="order-header">
                         <div className="order-header-left-section">
@@ -32,6 +38,8 @@ export function Ordergrid({orderitem}){
                 <div className="order-details-grid">
                     {
                         order.products.map((orderproduct)=>{
+                          //let productId;
+                          //productId=orderproduct.product.id;
                           return(
                             <Fragment key={orderproduct.product.id}>
                             <div className="product-image-container">
@@ -55,7 +63,7 @@ export function Ordergrid({orderitem}){
                             </div>
 
                             <div className="product-actions">
-                            <a href="/track">
+                            <a href={`/track/${order.id}/${orderproduct.product.id}`}>
                                 <button className="track-package-button button-secondary">
                                 Track package
                                 </button>
