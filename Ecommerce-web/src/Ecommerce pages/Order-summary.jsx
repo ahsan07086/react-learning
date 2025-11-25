@@ -21,7 +21,8 @@ export function Ordersummary({cartitem,cartdelivery,loadcart}){
               <img className="product-image"
                 src={item.product.image} />
 
-              <OrderCart item={item}/>
+              <OrderCart item={item}
+              loadcart={loadcart}/>
 
               <Orderdelivery 
               cartdelivery = {cartdelivery} 
