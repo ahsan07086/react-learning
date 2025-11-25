@@ -6,7 +6,7 @@ import axios from 'axios'
 import './Track.css'
 import '../HeaderComponents/header.css'
 import { useEffect, useState } from 'react';
-export function Track({cartitem}){
+export function Track(){
 // useParams is a React hook that used to replace a variable value with the url value.
     let {orderId,productId} = useParams();
     let [orderTrack,setOrder] = useState(null);
@@ -64,7 +64,7 @@ export function Track({cartitem}){
         <>
             <title>Tracking</title>
              <link rel="icon" type="image/svg+xml" href="tracking-favicon.png" />
-                    <Header cartitem={cartitem}/>
+                    
                     
                     <div className="tracking-page">
                     <div className="order-tracking">
